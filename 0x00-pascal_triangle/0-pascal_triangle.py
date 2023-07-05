@@ -2,6 +2,8 @@
 """A script to represent pascal's triangle"""
 
 def pascal_triangle(n):
+    """Returns a list of lists of numbers
+    representing the Pascal's triangle."""
     if n <= 0:
         return []
 
