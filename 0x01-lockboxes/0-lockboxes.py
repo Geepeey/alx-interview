@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''Unlocking Boxes'''
 
+
 def canUnlockAll(boxes):
     n = len(boxes)  # Total number of boxes
     visited = set()  # Set to store visited boxes
