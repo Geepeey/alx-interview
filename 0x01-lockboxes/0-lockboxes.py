@@ -1,32 +1,20 @@
 #!/usr/bin/python3
 '''Unlocking Boxes'''
 
+def canUnlockAll(boxes):
+    n = len(boxes)  # Total number of boxes
+    visited = set()  # Set to store visited boxes
+    stack = [0]  # Stack to store boxes that can currently be opened
 
-def can_unlock_all(boxes):
-    '''Checking unlocking abilities
-    Returns:
-        True: all boxes can be opened
-        False: not all boxes can be opened
-    '''
-    length = len(boxes)
-    keys = set()
-    opened_boxes = []
-    i = 0
+    while stack:
+        box = stack.pop()
 
-    while i < length:
-        oldi = i
-        opened_boxes.append(i)
-        keys.update(boxes[i])
-        for key in keys:
-            if key != 0 and key < length and key not in opened_boxes:
-                i = key
-                break
-        if oldi != i:
-            continue
-        else:
-            break
+        if box not in visited:
+            visited.add(box)
+            keys = boxes[box]
 
-    for i in range(length):
-        if i not in opened_boxes and i != 0:
-            return False
-    return True
+            for key in keys:
+                if key < n:
+                    stack.append(key)
+
+    return len(visited) == n
